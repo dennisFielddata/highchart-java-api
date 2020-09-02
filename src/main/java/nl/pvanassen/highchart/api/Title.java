@@ -1,182 +1,178 @@
 package nl.pvanassen.highchart.api;
 
 import nl.pvanassen.highchart.api.base.BaseObject;
-import nl.pvanassen.highchart.api.shared.Style;
 import nl.pvanassen.highchart.api.shared.AlignType;
 import nl.pvanassen.highchart.api.shared.EnumString;
+import nl.pvanassen.highchart.api.shared.Style;
 import nl.pvanassen.highchart.api.shared.Styleable;
 import nl.pvanassen.highchart.api.shared.VerticalAlignType;
 import nl.pvanassen.highchart.api.utils.Utils;
 
-public class Title 
-    extends     BaseObject
-    implements  Styleable<Title> {
-    
-    private String align;
-    
-    private Boolean floating;
-    
-    private Integer margin;
-    
-    private Style style;
+public class Title extends BaseObject implements Styleable<Title> {
 
-    private String text;
+  private String align;
 
-    private Boolean useHTML;
-    
-    private String verticalAlign;
-    
-    private Integer x;
-    
-    private Integer y;
+  private Boolean floating;
 
-    public Title() {
-        this.text = "";
+  private Integer margin;
+
+  private Style style;
+
+  private String text;
+
+  private Boolean useHTML;
+
+  private String verticalAlign;
+
+  private Integer x;
+
+  private Integer y;
+
+  public Title() {
+    this.text = "";
+  }
+
+  /**
+   * @return the align
+   */
+  public String getAlign() {
+    return this.align;
+  }
+
+  /**
+   * @return the floating
+   */
+  public Boolean getFloating() {
+    return this.floating;
+  }
+
+  /**
+   * @return the margin
+   */
+  public Integer getMargin() {
+    return this.margin;
+  }
+
+  public Style getStyle() {
+    if (this.style == null) {
+      this.style = new Style();
     }
-    
-    @Override
-    public Title style(
-            final Title src) {
-        if(src == null) {
-            return this;
-        }
-        this.align = src.align;
-        this.floating = src.floating;
-        this.margin = src.margin;
-        Utils.style(this.style, src.style);
-        this.text = src.text;
-        this.useHTML = src.useHTML;
-        this.verticalAlign = src.verticalAlign;
-        this.x = src.x;
-        this.y = src.y;
-        return this;
-    }
+    return this.style;
+  }
 
-    public Style getStyle() {
-        if (style == null) {
-            style = new Style();
-        }
-        return style;
-    }
+  public String getText() {
+    return this.text;
+  }
 
-    public String getText() {
-        return text;
-    }
+  /**
+   * @return the useHTML
+   */
+  public Boolean getUseHTML() {
+    return this.useHTML;
+  }
 
-    public Title setText(String text) {
-        this.text = text;
-        return this;
-    }
+  /**
+   * @return the verticalAlign
+   */
+  public String getVerticalAlign() {
+    return this.verticalAlign;
+  }
 
-    /**
-     * @return the align
-     */
-    public String getAlign() {
-        return align;
-    }
+  /**
+   * @return the x
+   */
+  public Integer getX() {
+    return this.x;
+  }
 
-    /**
-     * @param align the align to set
-     * @return 
-     */
-    public Title setAlign(AlignType align) {
-        this.align = EnumString.toString(align);
-        return this;
-    }
+  /**
+   * @return the y
+   */
+  public Integer getY() {
+    return this.y;
+  }
 
-    /**
-     * @return the floating
-     */
-    public Boolean getFloating() {
-        return floating;
-    }
+  /**
+   * @param align the align to set
+   * @return
+   */
+  public Title setAlign(AlignType align) {
+    this.align = EnumString.toString(align);
+    return this;
+  }
 
-    /**
-     * @param floating the floating to set
-     * @return 
-     */
-    public Title setFloating(Boolean floating) {
-        this.floating = floating;
-        return this;
-    }
+  /**
+   * @param floating the floating to set
+   * @return
+   */
+  public Title setFloating(Boolean floating) {
+    this.floating = floating;
+    return this;
+  }
 
-    /**
-     * @return the margin
-     */
-    public Integer getMargin() {
-        return margin;
-    }
+  /**
+   * @param margin the margin to set
+   * @return
+   */
+  public Title setMargin(Integer margin) {
+    this.margin = margin;
+    return this;
+  }
 
-    /**
-     * @param margin the margin to set
-     * @return 
-     */
-    public Title setMargin(Integer margin) {
-        this.margin = margin;
-        return this;
-    }
+  public Title setText(String text) {
+    this.text = text;
+    return this;
+  }
 
-    /**
-     * @return the useHTML
-     */
-    public Boolean getUseHTML() {
-        return useHTML;
-    }
+  /**
+   * @param useHTML the useHTML to set
+   * @return
+   */
+  public Title setUseHTML(Boolean useHTML) {
+    this.useHTML = useHTML;
+    return this;
+  }
 
-    /**
-     * @param useHTML the useHTML to set
-     * @return 
-     */
-    public Title setUseHTML(Boolean useHTML) {
-        this.useHTML = useHTML;
-        return this;
-    }
+  /**
+   * @param verticalAlign the verticalAlign to set
+   * @return
+   */
+  public Title setVerticalAlign(VerticalAlignType verticalAlign) {
+    this.verticalAlign = EnumString.toString(verticalAlign);
+    return this;
+  }
 
-    /**
-     * @return the verticalAlign
-     */
-    public String getVerticalAlign() {
-        return verticalAlign;
-    }
+  /**
+   * @param x the x to set
+   * @return
+   */
+  public Title setX(Integer x) {
+    this.x = x;
+    return this;
+  }
 
-    /**
-     * @param verticalAlign the verticalAlign to set
-     * @return 
-     */
-    public Title setVerticalAlign(VerticalAlignType verticalAlign) {
-        this.verticalAlign = EnumString.toString(verticalAlign);
-        return this;
-    }
+  /**
+   * @param y the y to set
+   * @return
+   */
+  public Title setY(Integer y) {
+    this.y = y;
+    return this;
+  }
 
-    /**
-     * @return the x
-     */
-    public Integer getX() {
-        return x;
+  public Title style(final Title src) {
+    if (src == null) {
+      return this;
     }
-
-    /**
-     * @param x the x to set
-     * @return 
-     */
-    public Title setX(Integer x) {
-        this.x = x;
-        return this;
-    }
-
-    /**
-     * @return the y
-     */
-    public Integer getY() {
-        return y;
-    }
-
-    /**
-     * @param y the y to set
-     * @return 
-     */
-    public Title setY(Integer y) {
-        this.y = y;
-        return this;
-    }
+    this.align = src.align;
+    this.floating = src.floating;
+    this.margin = src.margin;
+    Utils.style(this.style, src.style);
+    this.text = src.text;
+    this.useHTML = src.useHTML;
+    this.verticalAlign = src.verticalAlign;
+    this.x = src.x;
+    this.y = src.y;
+    return this;
+  }
 }

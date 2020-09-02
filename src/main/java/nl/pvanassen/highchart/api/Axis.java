@@ -1,5 +1,6 @@
 package nl.pvanassen.highchart.api;
 
+import java.awt.Color;
 import nl.pvanassen.highchart.api.axis.AxisLabels;
 import nl.pvanassen.highchart.api.axis.AxisPlotLines;
 import nl.pvanassen.highchart.api.base.BaseObject;
@@ -12,423 +13,411 @@ import nl.pvanassen.highchart.api.utils.ArrayString;
 import nl.pvanassen.highchart.api.utils.JsonArray;
 import nl.pvanassen.highchart.api.utils.Utils;
 
-import java.awt.Color;
+public class Axis extends BaseObject implements Styleable<Axis> {
 
-public class Axis 
-    extends     BaseObject
-    implements  Styleable<Axis> {
+  public enum Type {
+    LINEAR, LOGARITHMIC, DATETIME, CATEGORY
+  }
 
-    public enum Type {
-        LINEAR,
-        LOGARITHMIC,
-        DATETIME,
-        CATEGORY
+  private ArrayString categories;
+
+  private DateTimeLabelFormats dateTimeLabelFormats;
+
+  private String gridLineColor;
+
+  private String gridLineDashStyle;
+
+  private Integer gridLineWidth;
+
+  private AxisLabels labels;
+
+  private String lineColor;
+
+  private Integer lineWidth;
+
+  private Double max;
+
+  private Double min;
+
+  private String minorGridLineColor;
+
+  private String minorGridLineDashStyle;
+
+  private Integer minorGridLineWidth;
+
+  private Boolean opposite;
+
+  private JsonArray<AxisPlotLines> plotLines;
+
+  private Boolean reversed;
+
+  private Boolean showEmpty;
+
+  private Boolean showFirstLabel;
+
+  private Boolean showLastLabel;
+
+  private Boolean startOnTick;
+
+  private Double tickInterval;
+
+  private Double minTickInterval;
+
+  private Title title;
+
+  private String type;
+
+  private String id;
+
+  public Axis() {}
+
+  public ArrayString getCategories() {
+    if (this.categories == null) {
+      this.categories = new ArrayString();
     }
-    
-    private ArrayString categories;
+    return this.categories;
+  }
 
-    private DateTimeLabelFormats dateTimeLabelFormats;
-    
-    private String gridLineColor;
-    
-    private String gridLineDashStyle;
-    
-    private Integer gridLineWidth;
-    
-    private AxisLabels labels;
-    
-    private String lineColor;
-    
-    private Integer lineWidth;
-    
-    private Double max;
-    
-    private Double min;
-    
-    private String minorGridLineColor;
-    
-    private String minorGridLineDashStyle;
-    
-    private Integer minorGridLineWidth;
-    
-    private Boolean opposite;
-    
-    private JsonArray<AxisPlotLines> plotLines;
-    
-    private Boolean reversed;
-    
-    private Boolean showEmpty;
-    
-    private Boolean showFirstLabel;
+  public int getCategoriesLength() {
+    return this.categories != null ? this.categories.size() : 0;
+  }
 
-    private Boolean showLastLabel;
-
-    private Boolean startOnTick;
-
-    private Double tickInterval;
-
-    private Double minTickInterval;
-
-    private Title title;
-    
-    private String type;
-
-    private String id;
-
-    public Axis() { }
-    
-    @Override
-    public Axis style(
-            final Axis src) {
-        if(src == null) {
-            return this;
-        }
-        Utils.stylePrimitiveArray(this.categories, src.categories);
-        Utils.style(this.dateTimeLabelFormats, src.dateTimeLabelFormats);
-        this.gridLineColor = src.gridLineColor;
-        this.gridLineDashStyle = src.gridLineDashStyle;
-        this.gridLineWidth = src.gridLineWidth;
-        Utils.style(this.labels, src.labels);
-        this.lineColor = src.lineColor;
-        this.lineWidth = src.lineWidth;
-        this.max = src.max;
-        this.min = src.min;
-        this.minorGridLineColor = src.minorGridLineColor;
-        this.minorGridLineDashStyle = src.minorGridLineDashStyle;
-        this.minorGridLineWidth = src.minorGridLineWidth;
-        this.opposite = src.opposite;
-        this.plotLines = src.plotLines;
-        this.reversed = src.reversed;
-        this.showEmpty = src.showEmpty;
-        this.showFirstLabel = src.showFirstLabel;
-        this.showLastLabel = src.showLastLabel;
-        this.startOnTick = src.startOnTick;
-        this.tickInterval = src.tickInterval;
-        this.minTickInterval = src.minTickInterval;
-        Utils.style(this.title, src.title);
-        this.type = src.type;
-        this.id = src.id;
-        return this;
+  public DateTimeLabelFormats getDateTimeLabelFormats() {
+    if (this.dateTimeLabelFormats == null) {
+      this.dateTimeLabelFormats = new DateTimeLabelFormats();
     }
+    return this.dateTimeLabelFormats;
+  }
 
-    public ArrayString getCategories() {
-        if (categories == null) {
-            categories = new ArrayString();
-        }
-        return categories;
-    }
+  /**
+   * @return the gridLineColor
+   */
+  public String getGridLineColor() {
+    return this.gridLineColor;
+  }
 
-    public int getCategoriesLength() {
-        return categories != null ? categories.size() : 0;
-    }
+  /**
+   * @return the gridLineDashStyle
+   */
+  public String getGridLineDashStyle() {
+    return this.gridLineDashStyle;
+  }
 
-    public DateTimeLabelFormats getDateTimeLabelFormats() {
-        if (dateTimeLabelFormats == null) {
-            dateTimeLabelFormats = new DateTimeLabelFormats();
-        }
-        return dateTimeLabelFormats;
-    }
+  /**
+   * @return the gridLineWidth
+   */
+  public Integer getGridLineWidth() {
+    return this.gridLineWidth;
+  }
 
-    public AxisLabels getLabels() {
-        if (labels == null) {
-            labels = new AxisLabels();
-        }
-        return labels;
-    }
+  public String getId() {
+    return this.id;
+  }
 
-    public Double getMax() {
-        return max;
+  public AxisLabels getLabels() {
+    if (this.labels == null) {
+      this.labels = new AxisLabels();
     }
+    return this.labels;
+  }
 
-    public Double getMin() {
-        return min;
-    }
+  /**
+   * @return the lineColor
+   */
+  public String getLineColor() {
+    return this.lineColor;
+  }
 
-    public JsonArray<AxisPlotLines> getPlotLines() {
-        if(this.plotLines == null) {
-            this.plotLines = new JsonArray<AxisPlotLines>();
-        }
-        return plotLines;
-    }
+  /**
+   * @return the lineWidth
+   */
+  public Integer getLineWidth() {
+    return this.lineWidth;
+  }
 
-    public Double getTickInterval() {
-        return tickInterval;
-    }
+  public Double getMax() {
+    return this.max;
+  }
 
-    public Double getMinTickInterval() {
-        return minTickInterval;
-    }
+  public Double getMin() {
+    return this.min;
+  }
 
-    public Title getTitle() {
-        if (title == null) {
-            title = new Title();
-        }
-        return title;
-    }
+  /**
+   * @return the minorGridLineColor
+   */
+  public String getMinorGridLineColor() {
+    return this.minorGridLineColor;
+  }
 
-    public String getType() {
-        return type;
-    }
+  /**
+   * @return the minorGridLineDashStyle
+   */
+  public String getMinorGridLineDashStyle() {
+    return this.minorGridLineDashStyle;
+  }
 
-    public String getId() {
-        return id;
-    }
+  /**
+   * @return the minorGridLineWidth
+   */
+  public Integer getMinorGridLineWidth() {
+    return this.minorGridLineWidth;
+  }
 
-    public Axis setMax(Double max) {
-        this.max = max;
-        return this;
-    }
+  public Double getMinTickInterval() {
+    return this.minTickInterval;
+  }
 
-    public Axis setMin(Double min) {
-        this.min = min;
-        return this;
-    }
+  /**
+   * @return the opposite
+   */
+  public Boolean getOpposite() {
+    return this.opposite;
+  }
 
-    public Axis setTickInterval(Double tickInterval) {
-        this.tickInterval = tickInterval;
-        return this;
+  public JsonArray<AxisPlotLines> getPlotLines() {
+    if (this.plotLines == null) {
+      this.plotLines = new JsonArray<AxisPlotLines>();
     }
+    return this.plotLines;
+  }
 
-    public Axis setMinTickInterval(double minTickInterval) {
-        this.minTickInterval = minTickInterval;
-        return this;
-    }
+  /**
+   * @return the reversed
+   */
+  public Boolean getReversed() {
+    return this.reversed;
+  }
 
-    public Axis setType(Type type) {
-        this.type = EnumString.toString(type).toLowerCase();
-        return this;
-    }
+  /**
+   * @return the showEmpty
+   */
+  public Boolean getShowEmpty() {
+    return this.showEmpty;
+  }
 
-    public Axis setId(String id) {
-        this.id = id;
-        return this;
-    }
-    
-    /**
-     * @return the gridLineColor
-     */
-    public String getGridLineColor() {
-        return gridLineColor;
-    }
+  /**
+   * @return the showFirstLabel
+   */
+  public Boolean getShowFirstLabel() {
+    return this.showFirstLabel;
+  }
 
-    /**
-     * @param gridLineColor the gridLineColor to set
-     * @return 
-     */
-    public Axis setGridLineColor(Color gridLineColor) {
-        this.gridLineColor = HexColor.toString(gridLineColor);
-        return this;
-    }
+  /**
+   * @return the showLastLabel
+   */
+  public Boolean getShowLastLabel() {
+    return this.showLastLabel;
+  }
 
-    /**
-     * @return the gridLineDashStyle
-     */
-    public String getGridLineDashStyle() {
-        return gridLineDashStyle;
-    }
+  /**
+   * @return the startOnTick
+   */
+  public Boolean getStartOnTick() {
+    return this.startOnTick;
+  }
 
-    /**
-     * @param gridLineDashStyle the gridLineDashStyle to set
-     * @return 
-     */
-    public Axis setGridLineDashStyle(DashStyleType gridLineDashStyle) {
-        this.gridLineDashStyle = EnumString.toString(gridLineDashStyle);
-        return this;
-    }
+  public Double getTickInterval() {
+    return this.tickInterval;
+  }
 
-    /**
-     * @return the gridLineWidth
-     */
-    public Integer getGridLineWidth() {
-        return gridLineWidth;
+  public Title getTitle() {
+    if (this.title == null) {
+      this.title = new Title();
     }
+    return this.title;
+  }
 
-    /**
-     * @param gridLineWidth the gridLineWidth to set
-     * @return 
-     */
-    public Axis setGridLineWidth(Integer gridLineWidth) {
-        this.gridLineWidth = gridLineWidth;
-        return this;
-    }
+  public String getType() {
+    return this.type;
+  }
 
-    /**
-     * @return the lineColor
-     */
-    public String getLineColor() {
-        return lineColor;
-    }
+  /**
+   * @param gridLineColor the gridLineColor to set
+   * @return
+   */
+  public Axis setGridLineColor(Color gridLineColor) {
+    this.gridLineColor = HexColor.toString(gridLineColor);
+    return this;
+  }
 
-    /**
-     * @param lineColor the lineColor to set
-     * @return 
-     */
-    public Axis setLineColor(Color lineColor) {
-        this.lineColor = HexColor.toString(lineColor);
-        return this;
-    }
+  /**
+   * @param gridLineDashStyle the gridLineDashStyle to set
+   * @return
+   */
+  public Axis setGridLineDashStyle(DashStyleType gridLineDashStyle) {
+    this.gridLineDashStyle = EnumString.toString(gridLineDashStyle);
+    return this;
+  }
 
-    /**
-     * @return the lineWidth
-     */
-    public Integer getLineWidth() {
-        return lineWidth;
-    }
+  /**
+   * @param gridLineWidth the gridLineWidth to set
+   * @return
+   */
+  public Axis setGridLineWidth(Integer gridLineWidth) {
+    this.gridLineWidth = gridLineWidth;
+    return this;
+  }
 
-    /**
-     * @param lineWidth the lineWidth to set
-     * @return 
-     */
-    public Axis setLineWidth(Integer lineWidth) {
-        this.lineWidth = lineWidth;
-        return this;
-    }
+  public Axis setId(String id) {
+    this.id = id;
+    return this;
+  }
 
-    /**
-     * @return the minorGridLineColor
-     */
-    public String getMinorGridLineColor() {
-        return minorGridLineColor;
-    }
+  /**
+   * @param lineColor the lineColor to set
+   * @return
+   */
+  public Axis setLineColor(Color lineColor) {
+    this.lineColor = HexColor.toString(lineColor);
+    return this;
+  }
 
-    /**
-     * @param minorGridLineColor the minorGridLineColor to set
-     * @return 
-     */
-    public Axis setMinorGridLineColor(Color minorGridLineColor) {
-        this.minorGridLineColor = HexColor.toString(minorGridLineColor);
-        return this;
-    }
+  /**
+   * @param lineWidth the lineWidth to set
+   * @return
+   */
+  public Axis setLineWidth(Integer lineWidth) {
+    this.lineWidth = lineWidth;
+    return this;
+  }
 
-    /**
-     * @return the minorGridLineDashStyle
-     */
-    public String getMinorGridLineDashStyle() {
-        return minorGridLineDashStyle;
-    }
+  public Axis setMax(Double max) {
+    this.max = max;
+    return this;
+  }
 
-    /**
-     * @param minorGridLineDashStyle the minorGridLineDashStyle to set
-     * @return 
-     */
-    public Axis setMinorGridLineDashStyle(
-            final DashStyleType minorGridLineDashStyle) {
-        this.minorGridLineDashStyle = 
-                EnumString.toString(
-                        minorGridLineDashStyle);
-        return this;
-    }
+  public Axis setMin(Double min) {
+    this.min = min;
+    return this;
+  }
 
-    /**
-     * @return the minorGridLineWidth
-     */
-    public Integer getMinorGridLineWidth() {
-        return minorGridLineWidth;
-    }
+  /**
+   * @param minorGridLineColor the minorGridLineColor to set
+   * @return
+   */
+  public Axis setMinorGridLineColor(Color minorGridLineColor) {
+    this.minorGridLineColor = HexColor.toString(minorGridLineColor);
+    return this;
+  }
 
-    /**
-     * @param minorGridLineWidth the minorGridLineWidth to set
-     * @return 
-     */
-    public Axis setMinorGridLineWidth(Integer minorGridLineWidth) {
-        this.minorGridLineWidth = minorGridLineWidth;
-        return this;
-    }
+  /**
+   * @param minorGridLineDashStyle the minorGridLineDashStyle to set
+   * @return
+   */
+  public Axis setMinorGridLineDashStyle(final DashStyleType minorGridLineDashStyle) {
+    this.minorGridLineDashStyle = EnumString.toString(minorGridLineDashStyle);
+    return this;
+  }
 
-    /**
-     * @return the opposite
-     */
-    public Boolean getOpposite() {
-        return opposite;
-    }
+  /**
+   * @param minorGridLineWidth the minorGridLineWidth to set
+   * @return
+   */
+  public Axis setMinorGridLineWidth(Integer minorGridLineWidth) {
+    this.minorGridLineWidth = minorGridLineWidth;
+    return this;
+  }
 
-    /**
-     * @param opposite the opposite to set
-     * @return 
-     */
-    public Axis setOpposite(Boolean opposite) {
-        this.opposite = opposite;
-        return this;
-    }
+  public Axis setMinTickInterval(double minTickInterval) {
+    this.minTickInterval = minTickInterval;
+    return this;
+  }
 
-    /**
-     * @return the reversed
-     */
-    public Boolean getReversed() {
-        return reversed;
-    }
+  /**
+   * @param opposite the opposite to set
+   * @return
+   */
+  public Axis setOpposite(Boolean opposite) {
+    this.opposite = opposite;
+    return this;
+  }
 
-    /**
-     * @param reversed the reversed to set
-     * @return 
-     */
-    public Axis setReversed(Boolean reversed) {
-        this.reversed = reversed;
-        return this;
-    }
+  /**
+   * @param reversed the reversed to set
+   * @return
+   */
+  public Axis setReversed(Boolean reversed) {
+    this.reversed = reversed;
+    return this;
+  }
 
-    /**
-     * @return the showEmpty
-     */
-    public Boolean getShowEmpty() {
-        return showEmpty;
-    }
+  /**
+   * @param showEmpty the showEmpty to set
+   * @return
+   */
+  public Axis setShowEmpty(Boolean showEmpty) {
+    this.showEmpty = showEmpty;
+    return this;
+  }
 
-    /**
-     * @param showEmpty the showEmpty to set
-     * @return 
-     */
-    public Axis setShowEmpty(Boolean showEmpty) {
-        this.showEmpty = showEmpty;
-        return this;
-    }
+  /**
+   * @param showFirstLabel the showFirstLabel to set
+   * @return
+   */
+  public Axis setShowFirstLabel(Boolean showFirstLabel) {
+    this.showFirstLabel = showFirstLabel;
+    return this;
+  }
 
-    /**
-     * @return the showFirstLabel
-     */
-    public Boolean getShowFirstLabel() {
-        return showFirstLabel;
-    }
+  /**
+   * @param showLastLabel the showLastLabel to set
+   * @return
+   */
+  public Axis setShowLastLabel(Boolean showLastLabel) {
+    this.showLastLabel = showLastLabel;
+    return this;
+  }
 
-    /**
-     * @param showFirstLabel the showFirstLabel to set
-     * @return 
-     */
-    public Axis setShowFirstLabel(Boolean showFirstLabel) {
-        this.showFirstLabel = showFirstLabel;
-        return this;
-    }
+  /**
+   * @param startOnTick the startOnTick to set
+   * @return
+   */
+  public Axis setStartOnTick(Boolean startOnTick) {
+    this.startOnTick = startOnTick;
+    return this;
+  }
 
-    /**
-     * @return the showLastLabel
-     */
-    public Boolean getShowLastLabel() {
-        return showLastLabel;
-    }
+  public Axis setTickInterval(Double tickInterval) {
+    this.tickInterval = tickInterval;
+    return this;
+  }
 
-    /**
-     * @param showLastLabel the showLastLabel to set
-     * @return 
-     */
-    public Axis setShowLastLabel(Boolean showLastLabel) {
-        this.showLastLabel = showLastLabel;
-        return this;
-    }
+  public Axis setType(Type type) {
+    this.type = EnumString.toString(type).toLowerCase();
+    return this;
+  }
 
-    /**
-     * @return the startOnTick
-     */
-    public Boolean getStartOnTick() {
-        return startOnTick;
+  public Axis style(final Axis src) {
+    if (src == null) {
+      return this;
     }
-
-    /**
-     * @param startOnTick the startOnTick to set
-     * @return 
-     */
-    public Axis setStartOnTick(Boolean startOnTick) {
-        this.startOnTick = startOnTick;
-        return this;
-    }
+    Utils.stylePrimitiveArray(this.categories, src.categories);
+    Utils.style(this.dateTimeLabelFormats, src.dateTimeLabelFormats);
+    this.gridLineColor = src.gridLineColor;
+    this.gridLineDashStyle = src.gridLineDashStyle;
+    this.gridLineWidth = src.gridLineWidth;
+    Utils.style(this.labels, src.labels);
+    this.lineColor = src.lineColor;
+    this.lineWidth = src.lineWidth;
+    this.max = src.max;
+    this.min = src.min;
+    this.minorGridLineColor = src.minorGridLineColor;
+    this.minorGridLineDashStyle = src.minorGridLineDashStyle;
+    this.minorGridLineWidth = src.minorGridLineWidth;
+    this.opposite = src.opposite;
+    this.plotLines = src.plotLines;
+    this.reversed = src.reversed;
+    this.showEmpty = src.showEmpty;
+    this.showFirstLabel = src.showFirstLabel;
+    this.showLastLabel = src.showLastLabel;
+    this.startOnTick = src.startOnTick;
+    this.tickInterval = src.tickInterval;
+    this.minTickInterval = src.minTickInterval;
+    Utils.style(this.title, src.title);
+    this.type = src.type;
+    this.id = src.id;
+    return this;
+  }
 
 }

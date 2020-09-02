@@ -8,249 +8,248 @@ import nl.pvanassen.highchart.api.shared.HexColor;
 import nl.pvanassen.highchart.api.shared.Styleable;
 import nl.pvanassen.highchart.api.utils.Utils;
 
-public class Point 
-    extends     BaseObject
-    implements  Styleable<Point> {
-    
-    private String color;
-    
-    private PlotOptionsDataLabels dataLabels;
-    
-    private String drilldown;
-    
-    private String id;
-    
-    private Boolean isIntermediateSum;
-    
-    private Boolean isSum;
-    
-    private PlotOptionsMarker marker;
-    
-    private String name;
-    
-    private Boolean sliced;
-    
-    private NullableDouble x;
+public class Point extends BaseObject implements Styleable<Point> {
 
-    private NullableDouble y;
-    
-    private NullableDouble z;
-    
-    @Override
-    public Point style(
-            final Point src) {
-        if(src == null) {
-            return this;
-        }
-        this.color = src.color;
-        Utils.style(this.dataLabels, src.dataLabels);
-        this.drilldown = src.drilldown;
-        this.id = src.id;
-        this.isIntermediateSum = src.isIntermediateSum;
-        this.isSum = src.isSum;
-        Utils.style(this.marker, src.marker);
-        this.name = src.name;
-        this.sliced = src.sliced;
-        return this;
-    }
- 
+  private String color;
 
-    public String getColor() {
-        return color;
-    }
+  private PlotOptionsDataLabels dataLabels;
 
-    public String getName() {
-        return name;
-    }
+  private String drilldown;
 
-    public Double getX() {
-        return x.getValue();
-    }
+  private String id;
 
-    public Double getY() {
-        return y.getValue();
-    }
+  private Boolean isIntermediateSum;
 
-    /**
-     * @return the z
-     */
-    public Double getZ() {
-        return z.getValue();
-    }
-    
-    public Point setZ(double z) {
-        this.z = NullableDouble.of(z);
-        return this;
-    }
+  private Boolean isSum;
 
-    /**
-     * @param z the z to set
-     */
-    public Point setZ(Double z) {
-        this.z = NullableDouble.of(z);
-        return this;
-    }
+  private PlotOptionsMarker marker;
 
-    public Point setColor(String color) {
-        this.color = color;
-        return this;
-    }
-    
-    public Point setColor(Color color) {
-        this.color = HexColor.toString(color);
-        return this;
-    }
+  private String name;
 
-    public Point setName(String name) {
-        this.name = name;
-        return this;
-    }
-    
-    public Point setX(double x) {
-        this.x = NullableDouble.of(x);
-        return this;
-    }
+  private Boolean sliced;
 
-    public Point setX(Double x) {
-        this.x = NullableDouble.of(x);
-        return this;
-    }
-    
-    public Point setY(double y) {
-        this.y = NullableDouble.of(y);
-        return this;
-    }
+  private NullableDouble x;
 
-    public Point setY(Double y) {
-        this.y = NullableDouble.of(y);
-        return this;
-    }
+  private NullableDouble y;
 
-    /**
-     * Individual data label for each point. The options are the same as 
-     * the ones for plotOptions.series.dataLabels
-     * @return the dataLabels
-     */
-    public PlotOptionsDataLabels getDataLabels() {
-        if(this.dataLabels == null) {
-            this.dataLabels = new PlotOptionsDataLabels();
-        }
-        return dataLabels;
-    }
+  private NullableDouble z;
 
-    /**
-     * The id of a series in the drilldown.series array to use for a 
-     * drilldown for this point.
-     * @return the drilldown
-     */
-    public String getDrilldown() {
-        return drilldown;
-    }
+  public String getColor() {
+    return this.color;
+  }
 
-    /**
-     * The id of a series in the drilldown.series array to use for a 
-     * drilldown for this point.
-     * @param drilldown the drilldown to set
-     * @return 
-     */
-    public Point setDrilldown(String drilldown) {
-        this.drilldown = drilldown;
-        return this;
-    }
 
-    /**
-     * An id for the point. This can be used after render time to get a 
-     * pointer to the point object through chart.get().
-     * @return the id
-     */
-    public String getId() {
-        return id;
+  /**
+   * Individual data label for each point. The options are the same as the ones for
+   * plotOptions.series.dataLabels
+   *
+   * @return the dataLabels
+   */
+  public PlotOptionsDataLabels getDataLabels() {
+    if (this.dataLabels == null) {
+      this.dataLabels = new PlotOptionsDataLabels();
     }
+    return this.dataLabels;
+  }
 
-    /**
-     * An id for the point. This can be used after render time to get a 
-     * pointer to the point object through chart.get().
-     * @param id the id to set
-     * @return 
-     */
-    public Point setId(String id) {
-        this.id = id;
-        return this;
-    }
+  /**
+   * The id of a series in the drilldown.series array to use for a drilldown for this point.
+   *
+   * @return the drilldown
+   */
+  public String getDrilldown() {
+    return this.drilldown;
+  }
 
-    /**
-     * Waterfall series only. When this property is true, the points acts 
-     * as a summary column for the values added or subtracted since the 
-     * last intermediate sum, or since the start of the series. 
-     * The y value is ignored. Defaults to false.
-     * @return the isIntermediateSum
-     */
-    public Boolean getIsIntermediateSum() {
-        return isIntermediateSum;
-    }
+  /**
+   * An id for the point. This can be used after render time to get a pointer to the point object
+   * through chart.get().
+   *
+   * @return the id
+   */
+  public String getId() {
+    return this.id;
+  }
 
-    /**
-     * Waterfall series only. When this property is true, the points acts 
-     * as a summary column for the values added or subtracted since the 
-     * last intermediate sum, or since the start of the series. 
-     * The y value is ignored. Defaults to false.
-     * @param isIntermediateSum the isIntermediateSum to set
-     * @return 
-     */
-    public Point setIsIntermediateSum(Boolean isIntermediateSum) {
-        this.isIntermediateSum = isIntermediateSum;
-        return this;
-    }
+  /**
+   * Waterfall series only. When this property is true, the points acts as a summary column for the
+   * values added or subtracted since the last intermediate sum, or since the start of the series.
+   * The y value is ignored. Defaults to false.
+   *
+   * @return the isIntermediateSum
+   */
+  public Boolean getIsIntermediateSum() {
+    return this.isIntermediateSum;
+  }
 
-    /**
-     * Waterfall series only. When this property is true, the point display 
-     * the total sum across the entire series. 
-     * The y value is ignored. Defaults to false.
-     * @return the isSum
-     */
-    public Boolean getIsSum() {
-        return isSum;
-    }
+  /**
+   * Waterfall series only. When this property is true, the point display the total sum across the
+   * entire series. The y value is ignored. Defaults to false.
+   *
+   * @return the isSum
+   */
+  public Boolean getIsSum() {
+    return this.isSum;
+  }
 
-    /**
-     * Waterfall series only. When this property is true, the point display 
-     * the total sum across the entire series. 
-     * The y value is ignored. Defaults to false.
-     * @param isSum the isSum to set
-     * @return 
-     */
-    public Point setIsSum(Boolean isSum) {
-        this.isSum = isSum;
-        return this;
+  /**
+   * @return the marker
+   */
+  public PlotOptionsMarker getMarker() {
+    if (this.marker == null) {
+      this.marker = new PlotOptionsMarker();
     }
+    return this.marker;
+  }
 
-    /**
-     * @return the marker
-     */
-    public PlotOptionsMarker getMarker() {
-        if(this.marker == null) {
-            this.marker = new PlotOptionsMarker();
-        }
-        return marker;
-    }
+  public String getName() {
+    return this.name;
+  }
 
-    /**
-     * Pie series only. Whether to display a slice offset from the center. 
-     * Defaults to false.
-     * @return the sliced
-     */
-    public Boolean getSliced() {
-        return sliced;
-    }
+  /**
+   * Pie series only. Whether to display a slice offset from the center. Defaults to false.
+   *
+   * @return the sliced
+   */
+  public Boolean getSliced() {
+    return this.sliced;
+  }
 
-    /**
-     * Pie series only. Whether to display a slice offset from the center. 
-     * Defaults to false.
-     * @param sliced the sliced to set
-     * @return 
-     */
-    public Point setSliced(Boolean sliced) {
-        this.sliced = sliced;
-        return this;
+  public Double getX() {
+    return this.x.getValue();
+  }
+
+  public Double getY() {
+    return this.y.getValue();
+  }
+
+  /**
+   * @return the z
+   */
+  public Double getZ() {
+    return this.z.getValue();
+  }
+
+  public Point setColor(Color color) {
+    this.color = HexColor.toString(color);
+    return this;
+  }
+
+  public Point setColor(String color) {
+    this.color = color;
+    return this;
+  }
+
+  /**
+   * The id of a series in the drilldown.series array to use for a drilldown for this point.
+   *
+   * @param drilldown the drilldown to set
+   * @return
+   */
+  public Point setDrilldown(String drilldown) {
+    this.drilldown = drilldown;
+    return this;
+  }
+
+  /**
+   * An id for the point. This can be used after render time to get a pointer to the point object
+   * through chart.get().
+   *
+   * @param id the id to set
+   * @return
+   */
+  public Point setId(String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Waterfall series only. When this property is true, the points acts as a summary column for the
+   * values added or subtracted since the last intermediate sum, or since the start of the series.
+   * The y value is ignored. Defaults to false.
+   *
+   * @param isIntermediateSum the isIntermediateSum to set
+   * @return
+   */
+  public Point setIsIntermediateSum(Boolean isIntermediateSum) {
+    this.isIntermediateSum = isIntermediateSum;
+    return this;
+  }
+
+  /**
+   * Waterfall series only. When this property is true, the point display the total sum across the
+   * entire series. The y value is ignored. Defaults to false.
+   *
+   * @param isSum the isSum to set
+   * @return
+   */
+  public Point setIsSum(Boolean isSum) {
+    this.isSum = isSum;
+    return this;
+  }
+
+  public Point setName(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Pie series only. Whether to display a slice offset from the center. Defaults to false.
+   *
+   * @param sliced the sliced to set
+   * @return
+   */
+  public Point setSliced(Boolean sliced) {
+    this.sliced = sliced;
+    return this;
+  }
+
+  public Point setX(double x) {
+    this.x = NullableDouble.of(x);
+    return this;
+  }
+
+  public Point setX(Double x) {
+    this.x = NullableDouble.of(x);
+    return this;
+  }
+
+  public Point setY(double y) {
+    this.y = NullableDouble.of(y);
+    return this;
+  }
+
+  public Point setY(Double y) {
+    this.y = NullableDouble.of(y);
+    return this;
+  }
+
+  public Point setZ(double z) {
+    this.z = NullableDouble.of(z);
+    return this;
+  }
+
+  /**
+   * @param z the z to set
+   */
+  public Point setZ(Double z) {
+    this.z = NullableDouble.of(z);
+    return this;
+  }
+
+  public Point style(final Point src) {
+    if (src == null) {
+      return this;
     }
+    this.color = src.color;
+    Utils.style(this.dataLabels, src.dataLabels);
+    this.drilldown = src.drilldown;
+    this.id = src.id;
+    this.isIntermediateSum = src.isIntermediateSum;
+    this.isSum = src.isSum;
+    Utils.style(this.marker, src.marker);
+    this.name = src.name;
+    this.sliced = src.sliced;
+    return this;
+  }
 }

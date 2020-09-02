@@ -4,50 +4,47 @@ import java.io.OutputStream;
 
 public interface Renderer<T> {
 
-    public static abstract class PojoRenderer<T> implements Renderer<T> {
+  public static abstract class PojoRenderer<T> implements Renderer<T> {
 
-        private T options, globalOptions;
+    private T options, globalOptions;
 
-        private OutputStream output;
+    private OutputStream output;
 
-        protected T getChartOptions() {
-            return options;
-        }
-
-        protected T getGlobalOptions() {
-            return globalOptions;
-        }
-
-        protected OutputStream getOutputStream() {
-            return output;
-        }
-
-        @Override
-        public Renderer<T> setChartOptions(T options) {
-            this.options = options;
-            return this;
-        }
-
-        @Override
-        public Renderer<T> setGlobalOptions(T options) {
-            this.globalOptions = options;
-            return this;
-        }
-
-        @Override
-        public Renderer<T> setOutputStream(OutputStream output) {
-            this.output = output;
-            return this;
-        }
-
+    protected T getChartOptions() {
+      return this.options;
     }
 
-    void render();
+    protected T getGlobalOptions() {
+      return this.globalOptions;
+    }
 
-    Renderer<T> setChartOptions(T options);
+    protected OutputStream getOutputStream() {
+      return this.output;
+    }
 
-    Renderer<T> setGlobalOptions(T options);
+    public Renderer<T> setChartOptions(T options) {
+      this.options = options;
+      return this;
+    }
 
-    Renderer<T> setOutputStream(OutputStream outputStream);
+    public Renderer<T> setGlobalOptions(T options) {
+      this.globalOptions = options;
+      return this;
+    }
+
+    public Renderer<T> setOutputStream(OutputStream output) {
+      this.output = output;
+      return this;
+    }
+
+  }
+
+  void render();
+
+  Renderer<T> setChartOptions(T options);
+
+  Renderer<T> setGlobalOptions(T options);
+
+  Renderer<T> setOutputStream(OutputStream outputStream);
 
 }
