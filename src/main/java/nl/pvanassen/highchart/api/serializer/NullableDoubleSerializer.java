@@ -1,24 +1,21 @@
 /*
  * Copyright 2015 Gamma Associates Ltd.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 package nl.pvanassen.highchart.api.serializer;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
@@ -31,26 +28,23 @@ import nl.pvanassen.highchart.api.NullableDouble;
  * @author shaun.lefeuvre
  */
 public class NullableDoubleSerializer
-    implements  JsonSerializer<NullableDouble>,
-                JsonDeserializer<NullableDouble> {
+    implements JsonSerializer<NullableDouble>, JsonDeserializer<NullableDouble> {
 
-    public JsonElement serialize(
-            final NullableDouble src, 
-            final Type typeOfSrc, 
-            final JsonSerializationContext context) {
-        if(src.getValue() == null) {
-            return new JsonPrimitive("NullableDouble.NULL");
-        }
-        return new JsonPrimitive(src.getValue());
+  @Override
+  public NullableDouble deserialize(final JsonElement json, final Type typeOfT,
+      final JsonDeserializationContext context) throws JsonParseException {
+    if (json.getAsString().equals("NullableDouble.NULL")) {
+      return NullableDouble.NULL_INSTANCE;
     }
+    return NullableDouble.of(json.getAsDouble());
+  }
 
-    public NullableDouble deserialize(
-            final JsonElement json, 
-            final Type typeOfT, 
-            final JsonDeserializationContext context) throws JsonParseException {
-        if(json.getAsString().equals("NullableDouble.NULL")) {
-            return NullableDouble.NULL_INSTANCE;
-        }
-        return NullableDouble.of(json.getAsDouble());
+  @Override
+  public JsonElement serialize(final NullableDouble src, final Type typeOfSrc,
+      final JsonSerializationContext context) {
+    if (src.getValue() == null) {
+      return new JsonPrimitive("NullableDouble.NULL");
     }
+    return new JsonPrimitive(src.getValue());
+  }
 }
