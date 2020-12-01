@@ -98,6 +98,10 @@ public class PlotOptionsSeries extends BaseObject implements Styleable<PlotOptio
 
   private Integer turboThreshold;
 
+  private Long pointStart;
+
+  private Long pointInterval;
+
   /**
    * @return the allowPointSelect
    */
@@ -152,7 +156,7 @@ public class PlotOptionsSeries extends BaseObject implements Styleable<PlotOptio
    */
   public JsonArray<String> getColors() {
     if (this.colors == null) {
-      this.colors = new JsonArray<String>();
+      this.colors = new JsonArray<>();
     }
     return this.colors;
   }
@@ -781,6 +785,24 @@ public class PlotOptionsSeries extends BaseObject implements Styleable<PlotOptio
     return this;
   }
 
+  public Long getPointStart() {
+    return this.pointStart;
+  }
+
+  public PlotOptionsSeries setPointStart(Long pointStart) {
+    this.pointStart = pointStart;
+    return this;
+  }
+
+  public Long getPointInterval() {
+    return this.pointInterval;
+  }
+
+  public PlotOptionsSeries setPointInterval(Long pointInterval) {
+    this.pointInterval = pointInterval;
+    return this;
+  }
+
   /**
    * @param visible the visible to set
    * @return
@@ -790,6 +812,7 @@ public class PlotOptionsSeries extends BaseObject implements Styleable<PlotOptio
     return this;
   }
 
+  @Override
   public PlotOptionsSeries style(final PlotOptionsSeries src) {
     if (src == null) {
       return this;
@@ -837,6 +860,8 @@ public class PlotOptionsSeries extends BaseObject implements Styleable<PlotOptio
     this.trackByArea = src.trackByArea;
     this.visible = src.visible;
     this.turboThreshold = src.turboThreshold;
+    this.pointInterval = src.pointInterval;
+    this.pointStart = src.pointStart;
     return this;
   }
 }
